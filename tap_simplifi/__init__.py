@@ -69,7 +69,7 @@ def sync(config, state, catalog):
         )
 
         ad_report = stream.tap_stream_id == "ad_reports"
-        request_url = f'https://app-playground.simpli.fi/api/organizations/{config["organizationId"]}/campaign_stats?by_campaign=true&by_ad={ad_report}&start_date={config["startDate"]}&end_date={config["startDate"]}'
+        request_url = f'https://app-playground.simpli.fi/api/organizations/{config["organizationId"]}/campaign_stats?by_campaign=true&by_ad={ad_report}&start_date={config["startDate"]}&end_date={config["endDate"]}'
         headers = {
             "X-App-Key": config['appKey'],
             "X-User-Key": config['userKey'],
