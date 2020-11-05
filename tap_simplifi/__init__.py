@@ -79,7 +79,7 @@ def sync(config, state, catalog):
         resp = requests.get(request_url, headers = headers)
 
         max_bookmark = None
-        for row in resp.json()['campaign_stats'][:2]:
+        for row in resp.json()['campaign_stats']:
             # TODO: place type conversions or transformations here
 
             # write one or more rows to the stream:
