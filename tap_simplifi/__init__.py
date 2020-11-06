@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 import os
-import json
+import simplejson as json
 import singer
 from singer import utils, metadata
 from singer.catalog import Catalog, CatalogEntry
 from singer.schema import Schema
 import requests
+from datetime import datetime
 
 
 REQUIRED_CONFIG_KEYS = []
@@ -59,12 +60,10 @@ def sync(config, state, catalog):
     for stream in catalog.get_selected_streams(state):
         LOGGER.info("Syncing stream:" + stream.tap_stream_id)
 
-        bookmark_column = stream.replication_key
-        is_sorted = True  # TODO: indicate whether data is sorted ascending on bookmark value
-
+        schema = utils.load_json(get_abs_path("schemas/{}.json".format(stream.tap_stream_id)))
         singer.write_schema(
             stream_name=stream.tap_stream_id,
-            schema={"properties": stream.schema.properties, "type": stream.schema.type, "additionalProperties": stream.schema.type},
+            schema=schema,
             key_properties=stream.key_properties,
         )
 
@@ -78,21 +77,13 @@ def sync(config, state, catalog):
         }
         resp = requests.get(request_url, headers = headers)
 
-        max_bookmark = None
         for row in resp.json()['campaign_stats']:
             # TODO: place type conversions or transformations here
 
             # write one or more rows to the stream:
-            singer.write_records(stream.tap_stream_id, [row])
-            if bookmark_column:
-                if is_sorted:
-                    # update bookmark to latest value
-                    singer.write_state({stream.tap_stream_id: row[bookmark_column]})
-                else:
-                    # if data unsorted, save max value until end of writes
-                    max_bookmark = max(max_bookmark, row[bookmark_column])
-        if bookmark_column and not is_sorted:
-            singer.write_state({stream.tap_stream_id: max_bookmark})
+            singer.write_record(stream.tap_stream_id, json.loads(json.dumps(row)))
+
+        singer.write_state({'last_updated_at': datetime.now().isoformat()})
     return
 
 

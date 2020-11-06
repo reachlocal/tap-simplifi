@@ -40,6 +40,9 @@
 		},
         "stat_date": {
 			"type": "string"
+		},
+		"resources": {
+			"type": "array"
 		}
     }
 }
