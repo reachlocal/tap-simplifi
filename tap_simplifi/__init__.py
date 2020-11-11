@@ -81,6 +81,7 @@ def sync(config, state, catalog):
             # TODO: place type conversions or transformations here
 
             # write one or more rows to the stream:
+            del row['resources']
             singer.write_record(stream.tap_stream_id, json.loads(json.dumps(row)))
 
         singer.write_state({'last_updated_at': datetime.now().isoformat()})
