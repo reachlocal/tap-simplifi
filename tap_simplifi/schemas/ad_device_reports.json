@@ -1,0 +1,38 @@
+{
+    "type": [
+        "object"
+    ],
+    "additionalProperties": false,
+    "properties": {
+        "ad_file_reporting_type": {
+            "type": "string"
+        },
+        "ad_name": {
+            "type": "string"
+        },
+        "ad_size": {
+            "type": "string"
+        },
+        "campaign_name": {
+            "type": "string"
+        },
+        "client_id": {
+            "type": "number"
+        },
+        "browser_device_name": {
+            "type": "string"
+        },
+        "event_date": {
+            "type": "string"
+        },
+        "clicks": {
+            "type": "number"
+        },
+        "impressions": {
+            "type": "number"
+        },
+        "total_cust": {
+            "type": "number"
+        }
+    }
+}

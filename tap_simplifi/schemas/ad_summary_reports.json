@@ -1,0 +1,83 @@
+{
+    "type": [
+        "object"
+    ],
+    "additionalProperties": false,
+    "properties": {
+        "ad_file_reporting_type": {
+            "type": "string"
+        },
+        "ad_name": {
+            "type": "string"
+        },
+        "ad_size": {
+            "type": "string"
+        },
+        "campaign_name": {
+            "type": "string"
+        },
+        "client_id": {
+            "type": "number"
+        },
+        "event_date": {
+            "type": "string"
+        },
+        "clicks": {
+            "type": "number"
+        },
+        "impressions": {
+            "type": "number"
+        },
+        "total_cust": {
+            "type": "number"
+        },
+        "video_completes": {
+            "type": "number"
+        },
+        "video_first_quartiles": {
+            "type": "number"
+        },
+        "video_fullscreens": {
+            "type": "number"
+        },
+        "in_banner": {
+            "type": "number"
+        },
+        "in_stream_mid_roll": {
+            "type": "number"
+        },
+        "in_stream_post_roll": {
+            "type": "number"
+        },
+        "in_stream_pre_roll": {
+            "type": "number"
+        },
+        "interstitial": {
+            "type": "number"
+        },
+        "video_midpoints": {
+            "type": "number"
+        },
+        "video_mutes": {
+            "type": "number"
+        },
+        "video_pauses": {
+            "type": "number"
+        },
+        "video_resumes": {
+            "type": "number"
+        },
+        "video_starts": {
+            "type": "number"
+        },
+        "video_third_quartiles": {
+            "type": "number"
+        },
+        "unknown_type": {
+            "type": "number"
+        },
+        "video_unmutes": {
+            "type": "number"
+        }
+    }
+}

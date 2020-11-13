@@ -11,6 +11,7 @@ from datetime import datetime
 
 REQUIRED_CONFIG_KEYS = []
 LOGGER = singer.get_logger()
+base_url = "https://app.simpli.fi/api/organizations"
 
 
 def get_abs_path(path):
@@ -67,25 +68,90 @@ def sync(config, state, catalog):
             key_properties=stream.key_properties,
         )
 
-        ad_report = stream.tap_stream_id == "ad_reports"
-        request_url = f'https://app-playground.simpli.fi/api/organizations/{config["organizationId"]}/campaign_stats?by_campaign=true&by_ad={ad_report}&start_date={config["startDate"]}&end_date={config["endDate"]}'
         headers = {
             "X-App-Key": config['appKey'],
             "X-User-Key": config['userKey'],
             "MccUsername": config['username'],
-            "Accept": "application/json"
+            "Accept": "application/json",
+            "Content-Type": "application/json"
         }
-        resp = requests.get(request_url, headers = headers)
 
-        for row in resp.json()['campaign_stats']:
-            # TODO: place type conversions or transformations here
+        retrieve_stats = (stream.tap_stream_id == "ad_reports" or stream.tap_stream_id == "campaign_reports")
 
+        if retrieve_stats:
+            data = stats_data(stream, config, headers)
+        else:
+            data = reporting_data(stream, config, headers)
+
+        for row in data:
             # write one or more rows to the stream:
-            del row['resources']
             singer.write_record(stream.tap_stream_id, json.loads(json.dumps(row)))
 
         singer.write_state({'last_updated_at': datetime.now().isoformat()})
     return
+
+def stats_data(stream, config, headers):
+    ad_report = stream.tap_stream_id == "ad_reports"
+    request_url = f'{base_url}/{config["organizationId"]}/campaign_stats?by_campaign=true&by_ad={ad_report}&start_date={config["startDate"]}&end_date={config["endDate"]}'
+    resp = requests.get(request_url, headers = headers)
+    data = resp.json()['campaign_stats']
+    for row in data:
+        del row['resources']
+
+    return data
+
+def reporting_data(stream, config, headers):
+    report_map = {
+        "campaign_general_summary_reports": { "id": 55990, "date_param": "fact_delivery.event_date"},
+        "campaign_conversion_summary_reports": { "id": 55984, "date_param": "summary_delivery_events.event_date"},
+        "campaign_geofence_reports": { "id": 55987, "date_param": "summary_delivery_events.event_date"},
+        "campaign_device_reports": { "id": 55991, "date_param": "summary_delivery_events.event_date"},
+        "campaign_keyword_reports": { "id": 55988, "date_param": "summary_delivery_events.event_date"},
+        "campaign_network_publisher_reports": { "id": 55989, "date_param": "summary_delivery_events.event_date"},
+        "ad_summary_reports": { "id": 70870, "date_param": "fact_delivery.event_date"},
+        "ad_conversion_reports": { "id": 70826, "date_param": "summary_delivery_events.event_date"},
+        "ad_device_reports": { "id": 70840, "date_param": "summary_delivery_events.event_date"},
+        "ad_keyword_reports": { "id": 70867, "date_param": "summary_delivery_events.event_date"},
+        "ad_geofence_reports": { "id": 70863, "date_param": "summary_delivery_events.event_date"},
+        "ad_network_publisher_reports": { "id": 70847, "date_param": "summary_delivery_events.event_date"}
+    }
+    report_id = report_map[stream.tap_stream_id]["id"]
+    date_param = report_map[stream.tap_stream_id]["date_param"]
+    client_id = 25;
+
+    report_url = f'{base_url}/{client_id}/report_center/reports/{report_id}'
+    create_snapshot_url = f'{report_url}/schedules/create_snapshot'
+
+    snapshot_body = {
+        "destination_format": "json",
+        "filters": {}
+    }
+    snapshot_body["filters"][date_param] = "1 days ago for 1 days"
+
+    snapshot_created = requests.post(create_snapshot_url, data = json.dumps(snapshot_body), headers = headers).json()
+    snapshot_url = f'{report_url}/schedules/snapshots/{snapshot_created["snapshots"][0]["id"]}'
+
+    LOGGER.info(f'Snapshot created: {snapshot_url}')
+
+    report_download_url = ""
+    while True:
+        snapshot = requests.get(snapshot_url, headers = headers).json()
+        if snapshot["snapshots"][0]["status"] == "success":
+            report_download_url = snapshot["snapshots"][0]["download_link"]
+            break
+
+    LOGGER.info(f'Downloading report: {report_download_url}')
+    raw_data = requests.get(report_download_url).json()
+
+    data = []
+    for row in raw_data:
+        mapped = {}
+        for attr, value in row.items():
+            key = attr.split(".")[-1]
+            mapped[key] = value
+        data.append(mapped)
+
+    return data
 
 
 @utils.handle_top_exception(LOGGER)

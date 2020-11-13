@@ -1,0 +1,72 @@
+{
+    "type": ["object"],
+    "additionalProperties": false,
+    "properties": {
+        "client_id": {
+            "type": "number"
+        },
+        "event_date": {
+            "type": "string"
+        },
+        "campaign_name": {
+            "type": "string"
+        },
+        "impressions": {
+            "type": "number"
+        },
+        "clicks": {
+            "type": "number"
+        },
+        "total_cust": {
+            "type": "number"
+        },
+        "video_starts": {
+            "type": "number"
+        },
+        "video_completes": {
+            "type": "number"
+        },
+        "video_first_quartiles": {
+            "type": "number"
+        },
+        "video_midpoints": {
+            "type": "number"
+        },
+        "video_third_quartiles": {
+            "type": "number"
+        },
+        "video_fullscreens": {
+            "type": "number"
+        },
+        "video_mutes": {
+            "type": "number"
+        },
+        "video_unmutes": {
+            "type": "number"
+        },
+        "video_pauses": {
+            "type": "number"
+        },
+        "video_resumes": {
+            "type": "number"
+        },
+        "interstitial": {
+            "type": "number"
+        },
+        "in_banner": {
+            "type": "number"
+        },
+        "in_stream_pre_roll": {
+            "type": "number"
+        },
+        "in_stream_mid_roll": {
+            "type": "number"
+        },
+        "in_stream_post_roll": {
+            "type": "number"
+        },
+        "unknown_type": {
+            "type": "number"
+        }
+    }
+}

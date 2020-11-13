@@ -1,0 +1,48 @@
+{
+    "type": ["object"],
+    "additionalProperties": false,
+    "properties": {
+        "client_id": {
+            "type": "number"
+        },
+        "event_date": {
+            "type": "string"
+        },
+        "campaign_name": {
+            "type": "string"
+        },
+        "target_geo_fence_name": {
+            "type": "string"
+        },
+        "target_geo_fence_id": {
+            "type": "string"
+        },
+        "geo_fence_type": {
+            "type": "string"
+        },
+        "conversion_geo_fence_name": {
+            "type": "string"
+        },
+        "conversion_geo_fence_id": {
+            "type": "string"
+        },
+        "impressions": {
+            "type": "number"
+        },
+        "clicks": {
+            "type": "number"
+        },
+        "weighted_actions": {
+            "type": "number"
+        },
+        "clickthrough_visits": {
+            "type": "number"
+        },
+        "viewthrough_visits": {
+            "type": "number"
+        },
+        "total_cust": {
+            "type": "number"
+        }
+    }
+}

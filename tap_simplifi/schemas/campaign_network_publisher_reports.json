@@ -1,0 +1,54 @@
+{
+    "type": ["object"],
+    "additionalProperties": false,
+    "properties": {
+        "campaign_name": {
+            "type": "string"
+        },
+        "client_id": {
+            "type": "number"
+        },
+        "domain_name": {
+            "type": "string"
+        },
+        "event_date": {
+            "type": "string"
+        },
+        "clickthrough_leads": {
+            "type": "number"
+        },
+        "clickthrough_other": {
+            "type": "number"
+        },
+        "clickthrough_sales": {
+            "type": "number"
+        },
+        "clickthrough_signups": {
+            "type": "number"
+        },
+        "viewthrough_leads": {
+            "type": "number"
+        },
+        "viewthrough_other": {
+            "type": "number"
+        },
+        "viewthrough_sales": {
+            "type": "number"
+        },
+        "viewthrough_signups": {
+            "type": "number"
+        },
+        "weighted_actions": {
+            "type": "number"
+        },
+        "clicks": {
+            "type": "number"
+        },
+        "impressions": {
+            "type": "number"
+        },
+        "total_cust": {
+            "type": "number"
+        }
+    }
+}

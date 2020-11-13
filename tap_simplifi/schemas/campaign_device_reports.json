@@ -1,0 +1,27 @@
+{
+    "type": ["object"],
+    "additionalProperties": false,
+    "properties": {
+        "client_id": {
+            "type": "number"
+        },
+        "event_date": {
+            "type": "string"
+        },
+        "campaign_name": {
+            "type": "string"
+        },
+        "browser_device_name": {
+            "type": "string"
+        },
+        "impressions": {
+            "type": "number"
+        },
+        "clicks": {
+            "type": "number"
+        },
+        "total_cust": {
+            "type": "number"
+        }
+    }
+}
