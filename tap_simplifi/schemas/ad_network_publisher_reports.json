@@ -5,61 +5,80 @@
     "additionalProperties": false,
     "properties": {
         "ad_file_reporting_type": {
-            "type": "string"
+            "type": "string",
+            "label": "Ad Ad File Type"
         },
         "ad_name": {
-            "type": "string"
+            "type": "string",
+            "label": "Ad Ad Name"
         },
         "ad_size": {
-            "type": "string"
+            "type": "string",
+            "label": "Ad Ad Size"
         },
         "campaign_name": {
-            "type": "string"
+            "type": "string",
+            "label": "Campaign Campaign Name"
         },
         "client_id": {
-            "type": "number"
+            "type": "number",
+            "label": "Companies Client ID"
         },
         "domain_name": {
-            "type": "string"
+            "type": "string",
+            "label": "Domain Domain Name"
         },
         "event_date": {
-            "type": "string"
+            "type": "string",
+            "label": "Time Event Date"
         },
         "clickthrough_leads": {
-            "type": "number"
+            "type": "number",
+            "label": "Conversions Clickthrough Leads"
         },
         "clickthrough_other": {
-            "type": "number"
+            "type": "number",
+            "label": "Conversions Clickthrough Other"
         },
         "clickthrough_sales": {
-            "type": "number"
+            "type": "number",
+            "label": "Conversions Clickthrough Sales"
         },
         "clickthrough_signups": {
-            "type": "number"
+            "type": "number",
+            "label": "Conversions Clickthrough Signups"
         },
         "viewthrough_leads": {
-            "type": "number"
+            "type": "number",
+            "label": "Conversions Viewthrough Leads"
         },
         "viewthrough_other": {
-            "type": "number"
+            "type": "number",
+            "label": "Conversions Viewthrough Other"
         },
         "viewthrough_sales": {
-            "type": "number"
+            "type": "number",
+            "label": "Conversions Viewthrough Sales"
         },
         "viewthrough_signups": {
-            "type": "number"
+            "type": "number",
+            "label": "Conversions Viewthrough Signups"
         },
         "weighted_actions": {
-            "type": "number"
+            "type": "number",
+            "label": "Conversions Weighted Actions"
         },
         "clicks": {
-            "type": "number"
+            "type": "number",
+            "label": "Performance Clicks"
         },
         "impressions": {
-            "type": "number"
+            "type": "number",
+            "label": "Performance Impressions"
         },
         "total_cust": {
-            "type": "number"
+            "type": "number",
+            "label": "Performance Total Spend"
         }
     }
 }

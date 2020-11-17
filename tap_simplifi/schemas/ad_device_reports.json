@@ -1,38 +1,48 @@
-{
+{    
     "type": [
         "object"
     ],
     "additionalProperties": false,
     "properties": {
         "ad_file_reporting_type": {
-            "type": "string"
+            "type": "string",
+            "label": "Ad Ad File Type"
         },
         "ad_name": {
-            "type": "string"
+            "type": "string",
+            "label": "Ad Ad Name"
         },
         "ad_size": {
-            "type": "string"
+            "type": "string",
+            "label": "Ad Ad Size"
         },
         "campaign_name": {
-            "type": "string"
+            "type": "string",
+            "label": "Campaign Campaign Name"
         },
         "client_id": {
-            "type": "number"
+            "type": "number",
+            "label": "Companies Client ID"
         },
         "browser_device_name": {
-            "type": "string"
+            "type": "string",
+            "label": "Details Device Name"
         },
         "event_date": {
-            "type": "string"
+            "type": "string",
+            "label": "Time Event Date"
         },
         "clicks": {
-            "type": "number"
+            "type": "number",
+            "label": "Performance Clicks"
         },
         "impressions": {
-            "type": "number"
+            "type": "number",
+            "label": "Performance Impressions"
         },
         "total_cust": {
-            "type": "number"
+            "type": "number",
+            "label": "Performance Total Spend"
         }
     }
 }

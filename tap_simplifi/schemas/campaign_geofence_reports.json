@@ -1,48 +1,64 @@
 {
-    "type": ["object"],
+    "type": [
+        "object"
+    ],
     "additionalProperties": false,
     "properties": {
-        "client_id": {
-            "type": "number"
-        },
-        "event_date": {
-            "type": "string"
-        },
         "campaign_name": {
-            "type": "string"
+            "type": "string",
+            "label": "Campaign Campaign Name"
         },
-        "target_geo_fence_name": {
-            "type": "string"
-        },
-        "target_geo_fence_id": {
-            "type": "string"
-        },
-        "geo_fence_type": {
-            "type": "string"
-        },
-        "conversion_geo_fence_name": {
-            "type": "string"
+        "client_id": {
+            "type": "number",
+            "label": "Companies Client ID"
         },
         "conversion_geo_fence_id": {
-            "type": "string"
+            "type": "string",
+            "label": "Geography Conversion Geo Fence ID"
         },
-        "impressions": {
-            "type": "number"
+        "conversion_geo_fence_name": {
+            "type": "string",
+            "label": "Geography Conversion Geo Fence Name"
         },
-        "clicks": {
-            "type": "number"
+        "target_geo_fence_id": {
+            "type": "string",
+            "label": "Geography Geo Fence ID"
         },
-        "weighted_actions": {
-            "type": "number"
+        "target_geo_fence_name": {
+            "type": "string",
+            "label": "Geography Geo Fence Name"
+        },
+        "geo_fence_type": {
+            "type": "string",
+            "label": "Geography Geo Fence Type"
+        },
+        "event_date": {
+            "type": "string",
+            "label": "Time Event Date"
         },
         "clickthrough_visits": {
-            "type": "number"
+            "type": "number",
+            "label": "Conversions Clickthrough Visits"
         },
         "viewthrough_visits": {
-            "type": "number"
+            "type": "number",
+            "label": "Conversions Viewthrough Visits"
+        },
+        "weighted_actions": {
+            "type": "number",
+            "label": "Conversions Weighted Actions"
+        },
+        "clicks": {
+            "type": "number",
+            "label": "Performance Clicks"
+        },
+        "impressions": {
+            "type": "number",
+            "label": "Performance Impressions"
         },
         "total_cust": {
-            "type": "number"
+            "type": "number",
+            "label": "Performance Total Spend"
         }
     }
 }

@@ -7,6 +7,8 @@ from singer.catalog import Catalog, CatalogEntry
 from singer.schema import Schema
 import requests
 from datetime import datetime
+from contextlib import closing
+import csv
 
 
 REQUIRED_CONFIG_KEYS = []
@@ -80,14 +82,12 @@ def sync(config, state, catalog):
 
         if retrieve_stats:
             data = stats_data(stream, config, headers)
+            for row in data:
+                singer.write_record(stream.tap_stream_id, json.loads(json.dumps(row)))
         else:
-            data = reporting_data(stream, config, headers)
+            data = reporting_data(stream, config, headers, schema)
 
-        for row in data:
-            # write one or more rows to the stream:
-            singer.write_record(stream.tap_stream_id, json.loads(json.dumps(row)))
-
-        singer.write_state({'last_updated_at': datetime.now().isoformat()})
+        singer.write_state({"last_updated_at": datetime.now().isoformat()})
     return
 
 def stats_data(stream, config, headers):
@@ -100,7 +100,7 @@ def stats_data(stream, config, headers):
 
     return data
 
-def reporting_data(stream, config, headers):
+def reporting_data(stream, config, headers, schema):
     report_map = {
         "campaign_general_summary_reports": { "id": 55990, "date_param": "fact_delivery.event_date"},
         "campaign_conversion_summary_reports": { "id": 55984, "date_param": "summary_delivery_events.event_date"},
@@ -123,7 +123,7 @@ def reporting_data(stream, config, headers):
     create_snapshot_url = f'{report_url}/schedules/create_snapshot'
 
     snapshot_body = {
-        "destination_format": "json",
+        "destination_format": "csv",
         "filters": {}
     }
     snapshot_body["filters"][date_param] = "1 days ago for 1 days"
@@ -141,18 +141,26 @@ def reporting_data(stream, config, headers):
             break
 
     LOGGER.info(f'Downloading report: {report_download_url}')
-    raw_data = requests.get(report_download_url).json()
 
-    data = []
-    for row in raw_data:
-        mapped = {}
-        for attr, value in row.items():
-            key = attr.split(".")[-1]
-            mapped[key] = value
-        data.append(mapped)
-
-    return data
-
+    props = [(k, v) for k, v in schema["properties"].items()]
+    with closing(requests.get(report_download_url, stream=True)) as r:
+        f = (line.decode('utf-8') for line in r.iter_lines())
+        reader = csv.reader(f, delimiter=',', quotechar='"')
+        
+        header = {}
+        for row_number, row in enumerate(reader):
+            if row_number == 0:
+                for idx in range(len(row)):
+                    header[row[idx]] = idx
+            else:
+                mapped = {}
+                for i in range(len(props)):
+                    value = row[header[props[i][1]["label"]]]
+                    if props[i][1]["type"] == "number":
+                        value = float(value) if "." in value else int(value)
+                    mapped[props[i][0]] = value
+                
+                singer.write_record(stream.tap_stream_id, json.loads(json.dumps(mapped)))
 
 @utils.handle_top_exception(LOGGER)
 def main():

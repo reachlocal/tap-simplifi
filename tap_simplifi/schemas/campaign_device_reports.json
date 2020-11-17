@@ -1,27 +1,36 @@
 {
-    "type": ["object"],
+    "type": [
+        "object"
+    ],
     "additionalProperties": false,
     "properties": {
-        "client_id": {
-            "type": "number"
-        },
-        "event_date": {
-            "type": "string"
-        },
         "campaign_name": {
-            "type": "string"
+            "type": "string",
+            "label": "Campaign Campaign Name"
+        },
+        "client_id": {
+            "type": "number",
+            "label": "Companies Client ID"   
         },
         "browser_device_name": {
-            "type": "string"
+            "type": "string",
+            "label": "Details Device Name"   
         },
-        "impressions": {
-            "type": "number"
+        "event_date": {
+            "type": "string",
+            "label": "Time Event Date"       
         },
         "clicks": {
-            "type": "number"
+            "type": "number",
+            "label": "Performance Clicks"
+        },
+        "impressions": {
+            "type": "number",
+            "label": "Performance Impressions"
         },
         "total_cust": {
-            "type": "number"
+            "type": "number",
+            "label": "Performance Total Spend"
         }
     }
 }

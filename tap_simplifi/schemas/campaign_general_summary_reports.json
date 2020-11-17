@@ -1,72 +1,96 @@
 {
-    "type": ["object"],
+    "type": [
+        "object"
+    ],
     "additionalProperties": false,
     "properties": {
+        "campaign_name": {
+            "type": "string",
+            "label": "Campaign Campaign Name"
+        },
         "client_id": {
-            "type": "number"
+            "type": "number",
+            "label": "Companies Client ID"
         },
         "event_date": {
-            "type": "string"
-        },
-        "campaign_name": {
-            "type": "string"
-        },
-        "impressions": {
-            "type": "number"
+            "type": "string",
+            "label": "Time Event Date"
         },
         "clicks": {
-            "type": "number"
+            "type": "number",
+            "label": "Performance Clicks"
+        },
+        "impressions": {
+            "type": "number",
+            "label": "Performance Impressions"
         },
         "total_cust": {
-            "type": "number"
-        },
-        "video_starts": {
-            "type": "number"
+            "type": "number",
+            "label": "Performance Total Spend"
         },
         "video_completes": {
-            "type": "number"
+            "type": "number",
+            "label": "Video Events Complete"
         },
         "video_first_quartiles": {
-            "type": "number"
-        },
-        "video_midpoints": {
-            "type": "number"
-        },
-        "video_third_quartiles": {
-            "type": "number"
+            "type": "number",
+            "label": "Video Events First Quartile"
         },
         "video_fullscreens": {
-            "type": "number"
-        },
-        "video_mutes": {
-            "type": "number"
-        },
-        "video_unmutes": {
-            "type": "number"
-        },
-        "video_pauses": {
-            "type": "number"
-        },
-        "video_resumes": {
-            "type": "number"
-        },
-        "interstitial": {
-            "type": "number"
+            "type": "number",
+            "label": "Video Events Fullscreen"
         },
         "in_banner": {
-            "type": "number"
-        },
-        "in_stream_pre_roll": {
-            "type": "number"
+            "type": "number",
+            "label": "Video Events In Banner"
         },
         "in_stream_mid_roll": {
-            "type": "number"
+            "type": "number",
+            "label": "Video Events In Stream Mid Roll"
         },
         "in_stream_post_roll": {
-            "type": "number"
+            "type": "number",
+            "label": "Video Events In Stream Post Roll"
+        },
+        "in_stream_pre_roll": {
+            "type": "number",
+            "label": "Video Events In Stream Pre Roll"
+        },
+        "interstitial": {
+            "type": "number",
+            "label": "Video Events Interstitial"
+        },
+        "video_midpoints": {
+            "type": "number",
+            "label": "Video Events Midpoint"
+        },
+        "video_mutes": {
+            "type": "number",
+            "label": "Video Events Mute"
+        },
+        "video_pauses": {
+            "type": "number",
+            "label": "Video Events Pause"
+        },
+        "video_resumes": {
+            "type": "number",
+            "label": "Video Events Resume"
+        },
+        "video_starts": {
+            "type": "number",
+            "label": "Video Events Start"
+        },
+        "video_third_quartiles": {
+            "type": "number",
+            "label": "Video Events Third Quartile"
         },
         "unknown_type": {
-            "type": "number"
+            "type": "number",
+            "label": "Video Events Unknown Type"
+        },
+        "video_unmutes": {
+            "type": "number",
+            "label": "Video Events Unmute"
         }
     }
 }

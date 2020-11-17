@@ -1,42 +1,56 @@
 {
-    "type": ["object"],
+    "type": [
+        "object"
+    ],
     "additionalProperties": false,
     "properties": {
+        "campaign_name": {
+            "type": "string",
+            "label": "Campaign Campaign Name"        
+        },
         "client_id": {
-            "type": "number"
+            "type": "number",
+            "label": "Companies Client ID"
         },
         "event_date": {
-            "type": "string"
-        },
-        "campaign_name": {
-            "type": "string"
-        },
-        "weighted_actions": {
-            "type": "number"
-        },
-        "clickthrough_sales": {
-            "type": "number"
-        },
-        "viewthrough_sales": {
-            "type": "number"
+            "type": "string",
+            "label": "Time Event Date"
         },
         "clickthrough_leads": {
-            "type": "number"
-        },
-        "viewthrough_leads": {
-            "type": "number"
-        },
-        "clickthrough_signups": {
-            "type": "number"
-        },
-        "viewthrough_signups": {
-            "type": "number"
+            "type": "number",
+            "label": "Conversions Clickthrough Leads"
         },
         "clickthrough_other": {
-            "type": "number"
+            "type": "number",
+            "label": "Conversions Clickthrough Other"
+        },
+        "clickthrough_sales": {
+            "type": "number",
+            "label": "Conversions Clickthrough Sales"
+        },
+        "clickthrough_signups": {
+            "type": "number",
+            "label": "Conversions Clickthrough Signups"
+        },
+        "viewthrough_leads": {
+            "type": "number",
+            "label": "Conversions Viewthrough Leads"
         },
         "viewthrough_other": {
-            "type": "number"
+            "type": "number",
+            "label": "Conversions Viewthrough Other"
+        },
+        "viewthrough_sales": {
+            "type": "number",
+            "label": "Conversions Viewthrough Sales"
+        },
+        "viewthrough_signups": {
+            "type": "number",
+            "label": "Conversions Viewthrough Signups"
+        },
+        "weighted_actions": {
+            "type": "number",
+            "label": "Conversions Weighted Actions"
         }
     }
 }
