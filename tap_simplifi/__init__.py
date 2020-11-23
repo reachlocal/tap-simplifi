@@ -155,10 +155,16 @@ def reporting_data(stream, config, headers, schema):
             else:
                 mapped = {}
                 for i in range(len(props)):
-                    value = row[header[props[i][1]["label"]]]
-                    if props[i][1]["type"] == "number":
-                        value = float(value) if "." in value else int(value)
-                    mapped[props[i][0]] = value
+                    try:
+                        value = row[header[props[i][1]["label"]]]
+                        if props[i][1]["type"] == "number":
+                            value = float(value) if "." in value else int(value)
+                        mapped[props[i][0]] = value
+                    except Exception as ex:
+                        LOGGER.info(ex)
+                        LOGGER.info(row_number)
+                        LOGGER.info(row)
+                        LOGGER.info(i)
                 
                 singer.write_record(stream.tap_stream_id, json.loads(json.dumps(mapped)))
 
