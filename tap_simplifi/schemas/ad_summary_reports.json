@@ -26,6 +26,7 @@
         },
         "event_date": {
             "type": "string",
+            "format": "date",
             "label": "Time Event Date"
         },
         "clicks": {

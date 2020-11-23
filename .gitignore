@@ -106,3 +106,4 @@ singer-check-tap-data
 state.json
 catalog.json
 .vscode/
+.vscode/settings.json
