@@ -126,7 +126,7 @@ def reporting_data(stream, config, headers, schema):
         "destination_format": "csv",
         "filters": {}
     }
-    snapshot_body["filters"][date_param] = "1 days ago for 1 days"
+    snapshot_body["filters"][date_param] = config["dateRange"]
 
     snapshot_created = requests.post(create_snapshot_url, data = json.dumps(snapshot_body), headers = headers).json()
     snapshot_url = f'{report_url}/schedules/snapshots/{snapshot_created["snapshots"][0]["id"]}'
