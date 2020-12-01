@@ -87,7 +87,7 @@ def sync(config, state, catalog):
         else:
             data = reporting_data(stream, config, headers, schema)
 
-        singer.write_state({"last_updated_at": datetime.now().isoformat()})
+        singer.write_state({"last_updated_at": datetime.now().isoformat(), "stream": stream.tap_stream_id})
     return
 
 def stats_data(stream, config, headers):
