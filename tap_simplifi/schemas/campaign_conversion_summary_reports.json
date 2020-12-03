@@ -4,6 +4,10 @@
     ],
     "additionalProperties": false,
     "properties": {
+        "campaign_id": {
+            "type": "integer",
+            "label": "Campaign Campaign ID"
+        },
         "campaign_name": {
             "type": "string",
             "label": "Campaign Campaign Name"        

@@ -4,6 +4,14 @@
     ],
     "additionalProperties": false,
     "properties": {
+        "campaign_id": {
+            "type": "integer",
+            "label": "Campaign Campaign ID"
+        },
+        "ad_id": {
+            "type": "integer",
+            "label": "Ad Ad ID"
+        },
         "ad_file_reporting_type": {
             "type": "string",
             "label": "Ad Ad File Type"

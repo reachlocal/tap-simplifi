@@ -102,18 +102,18 @@ def stats_data(stream, config, headers):
 
 def reporting_data(stream, config, headers, schema):
     report_map = {
-        "campaign_general_summary_reports": { "id": 55990, "date_param": "fact_delivery.event_date"},
-        "campaign_conversion_summary_reports": { "id": 55984, "date_param": "summary_delivery_events.event_date"},
-        "campaign_geofence_reports": { "id": 55987, "date_param": "summary_delivery_events.event_date"},
-        "campaign_device_reports": { "id": 55991, "date_param": "summary_delivery_events.event_date"},
-        "campaign_keyword_reports": { "id": 55988, "date_param": "summary_delivery_events.event_date"},
-        "campaign_network_publisher_reports": { "id": 55989, "date_param": "summary_delivery_events.event_date"},
-        "ad_summary_reports": { "id": 70870, "date_param": "fact_delivery.event_date"},
-        "ad_conversion_reports": { "id": 70826, "date_param": "summary_delivery_events.event_date"},
-        "ad_device_reports": { "id": 70840, "date_param": "summary_delivery_events.event_date"},
-        "ad_keyword_reports": { "id": 70867, "date_param": "summary_delivery_events.event_date"},
-        "ad_geofence_reports": { "id": 70863, "date_param": "summary_delivery_events.event_date"},
-        "ad_network_publisher_reports": { "id": 70847, "date_param": "summary_delivery_events.event_date"}
+        "campaign_general_summary_reports": { "id": 728559, "date_param": "fact_delivery.event_date"},
+        "campaign_conversion_summary_reports": { "id": 728557, "date_param": "summary_delivery_events.event_date"},
+        "campaign_geofence_reports": { "id": 728564, "date_param": "summary_delivery_events.event_date"},
+        "campaign_device_reports": { "id": 728558, "date_param": "summary_delivery_events.event_date"},
+        "campaign_keyword_reports": { "id": 728561, "date_param": "summary_delivery_events.event_date"},
+        "campaign_network_publisher_reports": { "id": 728556, "date_param": "summary_delivery_events.event_date"},
+        "ad_summary_reports": { "id": 728565, "date_param": "fact_delivery.event_date"},
+        "ad_conversion_reports": { "id": 728563, "date_param": "summary_delivery_events.event_date"},
+        "ad_device_reports": { "id": 728560, "date_param": "summary_delivery_events.event_date"},
+        "ad_keyword_reports": { "id": 728562, "date_param": "summary_delivery_events.event_date"},
+        "ad_geofence_reports": { "id": 728566, "date_param": "summary_delivery_events.event_date"},
+        "ad_network_publisher_reports": { "id": 728567, "date_param": "summary_delivery_events.event_date"}
     }
     report_id = report_map[stream.tap_stream_id]["id"]
     date_param = report_map[stream.tap_stream_id]["date_param"]
@@ -139,6 +139,9 @@ def reporting_data(stream, config, headers, schema):
         if snapshot["snapshots"][0]["status"] == "success":
             report_download_url = snapshot["snapshots"][0]["download_link"]
             break
+        if snapshot["snapshots"][0]["status"] == "failure":
+            LOGGER.info('Snapshot failed')
+            return
 
     LOGGER.info(f'Downloading report: {report_download_url}')
 
@@ -157,7 +160,7 @@ def reporting_data(stream, config, headers, schema):
                 for i in range(len(props)):
                     try:
                         value = row[header[props[i][1]["label"]]]
-                        if props[i][1]["type"] == "number":
+                        if props[i][1]["type"] == "number" or props[i][1]["type"] == "integer":
                             value = float(value) if "." in value else int(value)
                         mapped[props[i][0]] = value
                     except Exception as ex:
