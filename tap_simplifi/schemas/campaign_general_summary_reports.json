@@ -13,7 +13,7 @@
             "label": "Campaign Campaign Name"
         },
         "client_id": {
-            "type": "number",
+            "type": "integer",
             "label": "Companies Client ID"
         },
         "event_date": {
@@ -22,11 +22,11 @@
             "label": "Time Event Date"
         },
         "clicks": {
-            "type": "number",
+            "type": "integer",
             "label": "Performance Clicks"
         },
         "impressions": {
-            "type": "number",
+            "type": "integer",
             "label": "Performance Impressions"
         },
         "total_cust": {
@@ -34,67 +34,67 @@
             "label": "Performance Total Spend"
         },
         "video_completes": {
-            "type": "number",
+            "type": "integer",
             "label": "Video Events Complete"
         },
         "video_first_quartiles": {
-            "type": "number",
+            "type": "integer",
             "label": "Video Events First Quartile"
         },
         "video_fullscreens": {
-            "type": "number",
+            "type": "integer",
             "label": "Video Events Fullscreen"
         },
         "in_banner": {
-            "type": "number",
+            "type": "integer",
             "label": "Video Events In Banner"
         },
         "in_stream_mid_roll": {
-            "type": "number",
+            "type": "integer",
             "label": "Video Events In Stream Mid Roll"
         },
         "in_stream_post_roll": {
-            "type": "number",
+            "type": "integer",
             "label": "Video Events In Stream Post Roll"
         },
         "in_stream_pre_roll": {
-            "type": "number",
+            "type": "integer",
             "label": "Video Events In Stream Pre Roll"
         },
         "interstitial": {
-            "type": "number",
+            "type": "integer",
             "label": "Video Events Interstitial"
         },
         "video_midpoints": {
-            "type": "number",
+            "type": "integer",
             "label": "Video Events Midpoint"
         },
         "video_mutes": {
-            "type": "number",
+            "type": "integer",
             "label": "Video Events Mute"
         },
         "video_pauses": {
-            "type": "number",
+            "type": "integer",
             "label": "Video Events Pause"
         },
         "video_resumes": {
-            "type": "number",
+            "type": "integer",
             "label": "Video Events Resume"
         },
         "video_starts": {
-            "type": "number",
+            "type": "integer",
             "label": "Video Events Start"
         },
         "video_third_quartiles": {
-            "type": "number",
+            "type": "integer",
             "label": "Video Events Third Quartile"
         },
         "unknown_type": {
-            "type": "number",
+            "type": "integer",
             "label": "Video Events Unknown Type"
         },
         "video_unmutes": {
-            "type": "number",
+            "type": "integer",
             "label": "Video Events Unmute"
         }
     }

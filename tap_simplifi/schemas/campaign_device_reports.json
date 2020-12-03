@@ -13,7 +13,7 @@
             "label": "Campaign Campaign Name"
         },
         "client_id": {
-            "type": "number",
+            "type": "integer",
             "label": "Companies Client ID"   
         },
         "browser_device_name": {
@@ -26,11 +26,11 @@
             "label": "Time Event Date"       
         },
         "clicks": {
-            "type": "number",
+            "type": "integer",
             "label": "Performance Clicks"
         },
         "impressions": {
-            "type": "number",
+            "type": "integer",
             "label": "Performance Impressions"
         },
         "total_cust": {

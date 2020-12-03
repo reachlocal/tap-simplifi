@@ -13,7 +13,7 @@
             "label": "Campaign Campaign Name"
         },
         "client_id": {
-            "type": "number",
+            "type": "integer",
             "label": "Companies Client ID"
         },
         "conversion_geo_fence_id": {
@@ -42,23 +42,23 @@
             "label": "Time Event Date"
         },
         "clickthrough_visits": {
-            "type": "number",
+            "type": "integer",
             "label": "Conversions Clickthrough Visits"
         },
         "viewthrough_visits": {
-            "type": "number",
+            "type": "integer",
             "label": "Conversions Viewthrough Visits"
         },
         "weighted_actions": {
-            "type": "number",
+            "type": "integer",
             "label": "Conversions Weighted Actions"
         },
         "clicks": {
-            "type": "number",
+            "type": "integer",
             "label": "Performance Clicks"
         },
         "impressions": {
-            "type": "number",
+            "type": "integer",
             "label": "Performance Impressions"
         },
         "total_cust": {

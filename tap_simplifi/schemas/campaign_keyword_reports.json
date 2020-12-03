@@ -13,7 +13,7 @@
             "label": "Campaign Campaign Name"
         },
         "client_id": {
-            "type": "number",
+            "type": "integer",
             "label": "Companies Client ID"   
         },
         "keyword_reporting_name": {
@@ -26,47 +26,47 @@
             "label": "Time Event Date"       
         },
         "clickthrough_leads": {
-            "type": "number",
+            "type": "integer",
             "label": "Conversions Clickthrough Leads"
         },
         "clickthrough_other": {
-            "type": "number",
+            "type": "integer",
             "label": "Conversions Clickthrough Other"
         },
         "clickthrough_sales": {
-            "type": "number",
+            "type": "integer",
             "label": "Conversions Clickthrough Sales"
         },
         "clickthrough_signups": {
-            "type": "number",
+            "type": "integer",
             "label": "Conversions Clickthrough Signups"
         },
         "viewthrough_leads": {
-            "type": "number",
+            "type": "integer",
             "label": "Conversions Viewthrough Leads"
         },
         "viewthrough_other": {
-            "type": "number",
+            "type": "integer",
             "label": "Conversions Viewthrough Other"
         },
         "viewthrough_sales": {
-            "type": "number",
+            "type": "integer",
             "label": "Conversions Viewthrough Sales"
         },
         "viewthrough_signups": {
-            "type": "number",
+            "type": "integer",
             "label": "Conversions Viewthrough Signups"
         },
         "weighted_actions": {
-            "type": "number",
+            "type": "integer",
             "label": "Conversions Weighted Actions"
         },
         "clicks": {
-            "type": "number",
+            "type": "integer",
             "label": "Performance Clicks"
         },
         "impressions": {
-            "type": "number",
+            "type": "integer",
             "label": "Performance Impressions"
         },
         "total_cust": {
