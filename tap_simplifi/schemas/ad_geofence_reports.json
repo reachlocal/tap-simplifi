@@ -62,7 +62,7 @@
             "label": "Conversions Viewthrough Visits"
         },
         "weighted_actions": {
-            "type": "integer",
+            "type": "number",
             "label": "Conversions Weighted Actions"
         },
         "clicks": {
