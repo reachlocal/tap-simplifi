@@ -155,7 +155,7 @@ def reporting_data(stream, config, headers, schema):
             if row_number == 0:
                 for idx in range(len(row)):
                     header[row[idx]] = idx
-            else:
+            elif len(row) == len(props):
                 mapped = {}
                 for i in range(len(props)):
                     try:
