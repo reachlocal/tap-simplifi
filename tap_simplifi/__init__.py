@@ -169,7 +169,8 @@ def reporting_data(stream, config, headers, schema):
                         LOGGER.info(row)
                         LOGGER.info(i)
                 
-                singer.write_record(stream.tap_stream_id, json.loads(json.dumps(mapped)))
+                if len(mapped) == len(props):
+                    singer.write_record(stream.tap_stream_id, json.loads(json.dumps(mapped)))
 
 @utils.handle_top_exception(LOGGER)
 def main():
