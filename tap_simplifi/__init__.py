@@ -117,7 +117,7 @@ def reporting_data(stream, config, headers, schema):
     }
     report_id = report_map[stream.tap_stream_id]["id"]
     date_param = report_map[stream.tap_stream_id]["date_param"]
-    client_id = 25;
+    client_id = config["organizationId"];
 
     report_url = f'{base_url}/{client_id}/report_center/reports/{report_id}'
     create_snapshot_url = f'{report_url}/schedules/create_snapshot'
