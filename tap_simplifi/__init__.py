@@ -117,7 +117,7 @@ def reporting_data(stream, config, headers, schema):
     }
     report_id = report_map[stream.tap_stream_id]["id"]
     date_param = report_map[stream.tap_stream_id]["date_param"]
-    client_id = config["organizationId"];
+    client_id = int(config["organizationId"]);
 
     report_url = f'{base_url}/{client_id}/report_center/reports/{report_id}'
     create_snapshot_url = f'{report_url}/schedules/create_snapshot'
@@ -127,6 +127,7 @@ def reporting_data(stream, config, headers, schema):
         "filters": {}
     }
     snapshot_body["filters"][date_param] = config["dateRange"]
+    snapshot_body["filters"]["dim_client.client_id"] = client_id
 
     snapshot_created = requests.post(create_snapshot_url, data = json.dumps(snapshot_body), headers = headers).json()
     snapshot_url = f'{report_url}/schedules/snapshots/{snapshot_created["snapshots"][0]["id"]}'
