@@ -141,7 +141,7 @@ def reporting_data(stream, config, headers, schema):
             report_download_url = snapshot["snapshots"][0]["download_link"]
             break
         if snapshot["snapshots"][0]["status"] == "failure":
-            LOGGER.info('Snapshot failed')
+            LOGGER.error('Snapshot failed')
             return
 
     LOGGER.info(f'Downloading report: {report_download_url}')
@@ -165,9 +165,9 @@ def reporting_data(stream, config, headers, schema):
                             value = float(value) if "." in value else int(value)
                         mapped[props[i][0]] = value
                     except Exception as ex:
-                        LOGGER.info(ex)
+                        LOGGER.error(ex)
+                        LOGGER.error(row)
                         LOGGER.info(row_number)
-                        LOGGER.info(row)
                         LOGGER.info(i)
                 
                 if len(mapped) == len(props):
